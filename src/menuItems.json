@@ -1,22 +1,25 @@
 {
   "menuItemsToDisplay": [
     {
+      "key": 0,
       "title": "Snickers",
       "description": "Hungry, why wait?",
       "price": 3.99,
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Snickers-broken.png"
     },
     {
+      "key": 1,
       "title": "Reese's Cup",
       "description": "The classic combination of chocolate and peanut butter",
       "price": 3.99,
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Reeses-PB-Cups.png/1920px-Reeses-PB-Cups.png"
     },
     {
-      "title": "Candy Corn",
-      "description": "A popular, but controversial candy",
+      "key": 2,
+      "title": "Twix",
+      "description": "Do you prefer Left TWIX®’s smooth caramel flowed onto crispy cookie and bathed in chocolate?",
       "price": 2.99,
-      "imageUrl": "https://www.freepnglogos.com/uploads/candy-corn-png/candy-corn-holidays-occasions-all-city-candy-17.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Twix-broken.jpg"
     }
   ]
 }

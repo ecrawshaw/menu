@@ -25,5 +25,14 @@
             }
         ],
         "no-unused-vars": "off"
+    },
+    "globals": {
+        "window": true,
+        "document": true,
+        "jest": true,
+        "describe": true,
+        "it": true,
+        "expect": true,
+        "beforeEach": true
     }
 }

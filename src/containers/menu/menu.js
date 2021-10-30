@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MenuCard from '../../components/menuCard';
 import './menu.scss';
-import menuItems from '../../menuItems.json';
+import MenuItemsContext from './MenuItemContext';
 
 const Menu = () => {
-  const { menuItemsToDisplay } = menuItems;
+  const menuItemsContext = useContext(MenuItemsContext);
+  const { menuItemsToDisplay } = menuItemsContext;
 
   const menuItemRenderer = () => menuItemsToDisplay.map((item) => (
     <MenuCard
+      key={item.key}
       title={item.title}
       description={item.description}
       price={item.price}
@@ -17,7 +19,7 @@ const Menu = () => {
 
   return (
     <div className="menu-item-container">
-      <h1>Halloween Menu</h1>
+      <h1 className="menu-title">Halloween Menu</h1>
       {menuItemRenderer()}
     </div>
   );

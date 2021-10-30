@@ -1,7 +1,6 @@
 import React from 'react';
 import { string, number } from 'prop-types';
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import './menuCard.scss';
 import 'antd/dist/antd.css';
 
