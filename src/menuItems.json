@@ -1,0 +1,22 @@
+{
+  "menuItemsToDisplay": [
+    {
+      "title": "Snickers",
+      "description": "Hungry, why wait?",
+      "price": 3.99,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Snickers-broken.png"
+    },
+    {
+      "title": "Reese's Cup",
+      "description": "The classic combination of chocolate and peanut butter",
+      "price": 3.99,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Reeses-PB-Cups.png/1920px-Reeses-PB-Cups.png"
+    },
+    {
+      "title": "Candy Corn",
+      "description": "A popular, but controversial candy",
+      "price": 2.99,
+      "imageUrl": "https://www.freepnglogos.com/uploads/candy-corn-png/candy-corn-holidays-occasions-all-city-candy-17.png"
+    }
+  ]
+}

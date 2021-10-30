@@ -1,0 +1,23 @@
+.menu-item-card {
+  margin: 10px;
+  border-radius: 10px;
+}
+.menu-item-card .menu-item-card__title {
+  width: 100%;
+  border-bottom: 2px solid;
+}
+.menu-item-card .menu-item-card__price {
+  padding: 5px;
+}
+.menu-item-card .menu-item-card__image {
+  width: 50%;
+  height: 100%;
+  max-height: 200px;
+  margin: 5px;
+}
+
+.and-card-body {
+  background: darkorange;
+}
+
+/*# sourceMappingURL=menuCard.css.map */
