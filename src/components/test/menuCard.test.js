@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import MenuCard from '../menuCard';
-/* globals describe, expect, it */
 
 const props = {
   key: 0,
