@@ -10,8 +10,10 @@
     .menu-title{
         font-family: 'Creepster', cursive;
         font-size: 75px;
+        @media (max-width: 400px){
+            font-size: 45px;
+        }
         color: darkorange;
-
     }
 }
 
