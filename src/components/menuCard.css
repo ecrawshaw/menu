@@ -1,0 +1,20 @@
+.menu-item-card {
+  margin: 20px;
+}
+.menu-item-card .menu-item-card__title {
+  width: 100%;
+  border-bottom: 2px solid;
+}
+.menu-item-card .menu-item-card__price {
+  padding: 5px;
+}
+.menu-item-card .menu-item-card__image {
+  max-height: 200px;
+  margin: 5px;
+}
+
+.and-card-body {
+  background: darkorange;
+}
+
+/*# sourceMappingURL=menuCard.css.map */

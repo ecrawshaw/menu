@@ -1,0 +1,19 @@
+.menu-item-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    width: 75%;
+    height: 55%;
+
+    .menu-title{
+        font-family: 'Creepster', cursive;
+        font-size: 75px;
+        @media (max-width: 400px){
+            font-size: 45px;
+        }
+        color: darkorange;
+    }
+}
+
