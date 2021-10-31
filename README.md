@@ -2,7 +2,7 @@
 
 The Halloween React App is menu of Halloween candy written in JavaScript for Popmenu.
 
-# Motivation
+## Motivation
 
 This was project was created as a showcase for my React coding skills
 
