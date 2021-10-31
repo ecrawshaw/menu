@@ -2,7 +2,7 @@
 
 The Halloween React App is menu of Halloween candy written in JavaScript for Popmenu.
 
-#Motivation
+# Motivation
 
 This was project was created as a showcase for my React coding skills
 
@@ -22,5 +22,5 @@ You will also see any lint errors in the console.
 1. Run npm install
 2. run the `npm start` script
 
-##Changing default menu items
+## Changing default menu items
 To add or remove menu items on startup of the app, edit the `menuItems.json` file with your changes.
