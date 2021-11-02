@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import Menu from '../menu';
 import MenuItemsContext from '../MenuItemContext';
 
-const menuItemsToDisplay = [{
-  key: 0,
+const menuItems = [{
+  key: 'Snickers',
   title: 'Snickers',
   description: 'Hungry, why wait?',
   price: 3.99,
@@ -12,18 +12,18 @@ const menuItemsToDisplay = [{
 }];
 
 describe('Testing the menu component', () => {
-  let component;
+  let container;
 
   it('Should render a menu item card', () => {
-    component = render(
-      <MenuItemsContext.Provider value={{ menuItemsToDisplay }}>
+    container = render(
+      <MenuItemsContext.Provider value={{ menuItems }}>
         <Menu />
       </MenuItemsContext.Provider>,
     );
 
-    expect(component.getByText(menuItemsToDisplay[0].title)).toBeInTheDocument();
-    expect(component.getByText(menuItemsToDisplay[0].description)).toBeInTheDocument();
-    expect(component.getByText('Halloween Menu')).toBeInTheDocument();
-    expect(component.getByText('$3.99')).toBeInTheDocument();
+    expect(container.getByText(menuItems[0].title)).toBeInTheDocument();
+    expect(container.getByText(menuItems[0].description)).toBeInTheDocument();
+    expect(container.getByText('Halloween Menu')).toBeInTheDocument();
+    expect(container.getByText('$3.99')).toBeInTheDocument();
   });
 });

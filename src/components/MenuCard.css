@@ -1,5 +1,15 @@
 .menu-item-card {
   margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.menu-item-card .delete-menu-item {
+  color: darkorange;
+  margin: 10px;
+}
+.menu-item-card .delete-menu-item .delete-icon {
+  font-size: 25px;
 }
 .menu-item-card .menu-item-card__title {
   width: 100%;
@@ -13,8 +23,4 @@
   margin: 5px;
 }
 
-.and-card-body {
-  background: darkorange;
-}
-
-/*# sourceMappingURL=menuCard.css.map */
+/*# sourceMappingURL=MenuCard.css.map */

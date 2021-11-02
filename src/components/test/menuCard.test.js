@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import MenuCard from '../menuCard';
+import MenuCard from '../MenuCard';
 
 const props = {
-  key: 0,
+  key: 'Snickers',
   title: 'Snickers',
   description: 'Hungry, why wait?',
   price: 3.99,
@@ -11,15 +11,15 @@ const props = {
 };
 
 describe('Testing the menuCard component', () => {
-  let component;
+  let container;
 
   it('Should render a menu item card', () => {
-    component = render(
+    container = render(
       <MenuCard {...props} />,
     );
 
-    expect(component.getByText(props.title)).toBeInTheDocument();
-    expect(component.getByText(props.description)).toBeInTheDocument();
-    expect(component.getByText('$3.99')).toBeInTheDocument();
+    expect(container.getByText(props.title)).toBeInTheDocument();
+    expect(container.getByText(props.description)).toBeInTheDocument();
+    expect(container.getByText('$3.99')).toBeInTheDocument();
   });
 });

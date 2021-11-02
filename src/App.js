@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
-import menuItems from './menuItems.json';
+import menuItemsData from './menuItems.json';
 import MenuItemsContext from './containers/menu/MenuItemContext';
 import Menu from './containers/menu/menu';
 
 function App() {
+  const [menuItems, setMenuItems] = useState(menuItemsData.menuItemsToDisplay);
   return (
     <div className="app">
-      <MenuItemsContext.Provider value={menuItems}>
+      <MenuItemsContext.Provider value={{ menuItems, setMenuItems }}>
         <Menu />
       </MenuItemsContext.Provider>
     </div>

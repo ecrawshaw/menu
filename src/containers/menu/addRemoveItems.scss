@@ -1,0 +1,24 @@
+.ant-btn {
+  background-color: darkorange;
+  border-color: darkorange;
+}
+
+.ant-btn, .ant-btn:focus {
+  margin: 5px;
+  background: darkorange;
+  border-color: darkorange;
+  color: white;
+}
+
+.ant-btn:hover, .ant-btn-primary:hover {
+  margin: 5px;
+  border-color: darkorange;
+  color: darkorange;
+  background: white;
+}
+
+.add-item-modal{
+  .add-menu-item-title, .add-menu-item-image-url, .add-menu-item-price, .add-menu-item-description {
+    padding: 5px;
+  }
+}

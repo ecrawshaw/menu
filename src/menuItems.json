@@ -1,21 +1,21 @@
 {
   "menuItemsToDisplay": [
     {
-      "key": 0,
+      "key": "Snickers",
       "title": "Snickers",
       "description": "Hungry, why wait?",
       "price": 3.99,
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Snickers-broken.png"
     },
     {
-      "key": 1,
+      "key": "Reese's Cup",
       "title": "Reese's Cup",
       "description": "The classic combination of chocolate and peanut butter",
       "price": 3.99,
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Reeses-PB-Cups.png/1920px-Reeses-PB-Cups.png"
     },
     {
-      "key": 2,
+      "key": "Twix",
       "title": "Twix",
       "description": "Do you prefer Left TWIX®’s smooth caramel flowed onto crispy cookie and bathed in chocolate?",
       "price": 2.99,
