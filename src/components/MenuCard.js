@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  string, number, bool, func,
+  string, bool, func,
 } from 'prop-types';
 import {
   Button, Card, Input, Popconfirm, Tooltip,
@@ -85,7 +85,7 @@ const MenuCard = (props) => {
       <div className="delete-menu-item">
         { showDeleteIcon ? (
           <Popconfirm placement="topLeft" title={popConfirmText} onConfirm={removeMenuItem} okText="Yes" cancelText="No">
-            <DeleteOutlined className="delete-icon" />
+            <DeleteOutlined role="button" />
           </Popconfirm>
         )
           : null}
@@ -95,10 +95,10 @@ const MenuCard = (props) => {
 };
 
 MenuCard.propTypes = {
-  itemKey: number.isRequired,
+  itemKey: string.isRequired,
   title: string.isRequired,
   description: string.isRequired,
-  price: number.isRequired,
+  price: string.isRequired,
   imageUrl: string.isRequired,
   showDeleteIcon: bool.isRequired,
   removeMenuItems: func.isRequired,
