@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import menuItemsData from './menuItems.json';
 import MenuItemsContext from './containers/menu/MenuItemContext';
-import Menu from './containers/menu/menu';
+import Menu from './containers/menu/Menu';
 
 function App() {
   const [menuItems, setMenuItems] = useState(menuItemsData.menuItemsToDisplay);

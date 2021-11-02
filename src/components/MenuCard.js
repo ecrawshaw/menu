@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  string, number, bool, func,
+  string, bool, func,
 } from 'prop-types';
 import { Card, Popconfirm } from 'antd';
 import './MenuCard.scss';
@@ -10,7 +10,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 const MenuCard = (props) => {
   const { Meta } = Card;
   const {
-    title, description, price, imageUrl, showDeleteIcon, removeMenuItems,
+    itemKey, title, description, price, imageUrl, showDeleteIcon, removeMenuItems,
   } = props;
 
   const popConfirmText = 'Are you sure to delete this item?';
@@ -28,11 +28,11 @@ const MenuCard = (props) => {
   );
 
   const removeMenuItem = () => {
-    removeMenuItems(title);
+    removeMenuItems(itemKey);
   };
 
   return (
-    <div className="menu-item-card">
+    <div className="menu-item-card" key={itemKey}>
       <Card
         hoverable
         cover={(
@@ -44,13 +44,13 @@ const MenuCard = (props) => {
       >
         <Meta
           title={title}
-          description={getDescription()}
+          description={getDescription(description, price)}
         />
       </Card>
       <div className="delete-menu-item">
         { showDeleteIcon ? (
           <Popconfirm placement="topLeft" title={popConfirmText} onConfirm={removeMenuItem} okText="Yes" cancelText="No">
-            <DeleteOutlined className="delete-icon" />
+            <DeleteOutlined role="button" />
           </Popconfirm>
         )
           : null}
@@ -60,9 +60,10 @@ const MenuCard = (props) => {
 };
 
 MenuCard.propTypes = {
+  itemKey: string.isRequired,
   title: string.isRequired,
   description: string.isRequired,
-  price: number.isRequired,
+  price: string.isRequired,
   imageUrl: string.isRequired,
   showDeleteIcon: bool.isRequired,
   removeMenuItems: func.isRequired,

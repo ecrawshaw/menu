@@ -1,17 +1,30 @@
 import React, { useContext, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import MenuCard from '../../components/MenuCard';
-import './menu.scss';
+import './Menu.scss';
 import MenuItemsContext from './MenuItemContext';
-import AddRemoveItems from './addRemoveItems';
+import AddRemoveItems from './AddRemoveItems';
 
 const Menu = () => {
   const menuItemsContext = useContext(MenuItemsContext);
   const { menuItems, setMenuItems } = menuItemsContext;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+  const [newItemTitle, setNewItemTitle] = useState('');
+  const [newItemDescription, setNewItemDescription] = useState('');
+  const [newItemPrice, setNewItemPrice] = useState('');
+  const [newItemImageUrl, setNewItemImageUrl] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
-  const addMenuItems = (menuItem) => {
-    const updatedMenuItems = [...menuItems, menuItem];
+  const addMenuItems = () => {
+    const newItem = {
+      key: uuidv4(),
+      title: newItemTitle,
+      description: newItemDescription,
+      price: newItemPrice,
+      imageUrl: newItemImageUrl,
+    };
+    const updatedMenuItems = [...menuItems, newItem];
     setMenuItems(updatedMenuItems);
   };
 
@@ -23,6 +36,7 @@ const Menu = () => {
   const menuItemRenderer = () => menuItems.map((item) => (
     <MenuCard
       key={item.key}
+      itemKey={item.key}
       title={item.title}
       description={item.description}
       price={item.price}
@@ -41,6 +55,16 @@ const Menu = () => {
         addMenuItems={addMenuItems}
         setShowDeleteIcon={setShowDeleteIcon}
         showDeleteIcon={showDeleteIcon}
+        newItemTitle={newItemTitle}
+        setNewItemTitle={setNewItemTitle}
+        newItemDescription={newItemDescription}
+        setNewItemDescription={setNewItemDescription}
+        newItemPrice={newItemPrice}
+        setNewItemPrice={setNewItemPrice}
+        newItemImageUrl={newItemImageUrl}
+        setNewItemImageUrl={setNewItemImageUrl}
+        showAlert={showAlert}
+        setShowAlert={setShowAlert}
       />
       {menuItemRenderer()}
     </div>
