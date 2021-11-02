@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import {
   Alert, Button, Input, Modal,
 } from 'antd';
-import { bool, func } from 'prop-types';
-import './addRemoveItems.scss';
+import { bool, func, number } from 'prop-types';
+import './AddRemoveItems.scss';
 
 const AddRemoveItems = (props) => {
   const {
-    isModalVisible, setIsModalVisible, addMenuItems, setShowDeleteIcon, showDeleteIcon,
+    isModalVisible,
+    setIsModalVisible,
+    addMenuItems,
+    setShowDeleteIcon,
+    showDeleteIcon,
+    countOfMenuItems,
   } = props;
   const [newItemTitle, setNewItemTitle] = useState();
   const [newItemDescription, setNewItemDescription] = useState();
@@ -29,7 +34,7 @@ const AddRemoveItems = (props) => {
   const handleOk = () => {
     if (newItemDescription && newItemTitle && newItemPrice && newItemImageUrl) {
       addMenuItems({
-        key: newItemTitle,
+        key: countOfMenuItems + 1,
         title: newItemTitle,
         description: newItemDescription,
         price: newItemPrice,
@@ -88,5 +93,6 @@ AddRemoveItems.propTypes = {
   addMenuItems: func.isRequired,
   setShowDeleteIcon: func.isRequired,
   showDeleteIcon: bool.isRequired,
+  countOfMenuItems: number.isRequired,
 };
 export default AddRemoveItems;

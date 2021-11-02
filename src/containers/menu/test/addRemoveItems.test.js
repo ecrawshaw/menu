@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, prettyDOM, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import AddRemoveItems from '../addRemoveItems';
+import AddRemoveItems from '../AddRemoveItems';
 
 const props = {
   isModalVisible: true,

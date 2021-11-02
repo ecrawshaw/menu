@@ -22,5 +22,8 @@
   max-height: 200px;
   margin: 5px;
 }
+.menu-item-card .ant-input {
+  width: 75%;
+}
 
 /*# sourceMappingURL=MenuCard.css.map */

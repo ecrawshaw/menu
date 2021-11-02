@@ -1,14 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import MenuCard from '../../components/MenuCard';
-import './menu.scss';
+import './Menu.scss';
 import MenuItemsContext from './MenuItemContext';
-import AddRemoveItems from './addRemoveItems';
+import AddRemoveItems from './AddRemoveItems';
 
 const Menu = () => {
   const menuItemsContext = useContext(MenuItemsContext);
   const { menuItems, setMenuItems } = menuItemsContext;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+  const [countOfMenuItems, setCountOfMenuItems] = useState(menuItems.length);
+
+  useEffect(() => {
+    setCountOfMenuItems(menuItems.length);
+  }, [menuItems]);
 
   const addMenuItems = (menuItem) => {
     const updatedMenuItems = [...menuItems, menuItem];
@@ -20,15 +25,23 @@ const Menu = () => {
     setMenuItems(updatedMenuItems);
   };
 
+  const changeItemFields = (itemKey, propertyName, newValue) => {
+    const indexToUpdate = menuItems.findIndex((item) => item.key === itemKey);
+    const updatedMenuItems = menuItems;
+    updatedMenuItems[indexToUpdate][propertyName] = newValue;
+    setMenuItems([...updatedMenuItems]);
+  };
+
   const menuItemRenderer = () => menuItems.map((item) => (
     <MenuCard
-      key={item.key}
+      itemKey={item.key}
       title={item.title}
       description={item.description}
       price={item.price}
       imageUrl={item.imageUrl}
       showDeleteIcon={showDeleteIcon}
       removeMenuItems={removeMenuItems}
+      changeItemFields={changeItemFields}
     />
   ));
 
@@ -41,6 +54,7 @@ const Menu = () => {
         addMenuItems={addMenuItems}
         setShowDeleteIcon={setShowDeleteIcon}
         showDeleteIcon={showDeleteIcon}
+        countOfMenuItems={countOfMenuItems}
       />
       {menuItemRenderer()}
     </div>

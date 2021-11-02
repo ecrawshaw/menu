@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Menu from '../menu';
+import Menu from '../Menu';
 import MenuItemsContext from '../MenuItemContext';
 
 const menuItems = [{

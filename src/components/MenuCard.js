@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   string, number, bool, func,
 } from 'prop-types';
-import { Card, Popconfirm } from 'antd';
+import {
+  Button, Card, Input, Popconfirm, Tooltip,
+} from 'antd';
 import './MenuCard.scss';
 import 'antd/dist/antd.css';
 import { DeleteOutlined } from '@ant-design/icons';
 
 const MenuCard = (props) => {
   const { Meta } = Card;
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [menuItemField, setMenuItemField] = useState();
   const {
-    title, description, price, imageUrl, showDeleteIcon, removeMenuItems,
+    itemKey, title, description, price, imageUrl, showDeleteIcon, removeMenuItems, changeItemFields,
   } = props;
 
   const popConfirmText = 'Are you sure to delete this item?';
@@ -28,11 +32,42 @@ const MenuCard = (props) => {
   );
 
   const removeMenuItem = () => {
-    removeMenuItems(title);
+    removeMenuItems(itemKey);
+  };
+
+  const editTitle = () => {
+    setEditingTitle(true);
+  };
+
+  const saveUpdatedField = () => {
+    changeItemFields(itemKey, 'title', menuItemField);
+    setEditingTitle(false);
+  };
+
+  const getToolTipTitle = () => (<Button onClick={editTitle}>Click To Edit</Button>);
+
+  const getTitle = () => {
+    if (editingTitle) {
+      return (
+        <div className="editInput">
+          <Input
+            defaultValue={title}
+            onChange={(input) => setMenuItemField(input.target.value)}
+          />
+          <Button onClick={saveUpdatedField}>Save</Button>
+          <Button>Cancel</Button>
+        </div>
+      );
+    }
+    return (
+      <Tooltip title={getToolTipTitle()}>
+        <span>{title}</span>
+      </Tooltip>
+    );
   };
 
   return (
-    <div className="menu-item-card">
+    <div className="menu-item-card" key={itemKey}>
       <Card
         hoverable
         cover={(
@@ -43,7 +78,7 @@ const MenuCard = (props) => {
               )}
       >
         <Meta
-          title={title}
+          title={getTitle()}
           description={getDescription()}
         />
       </Card>
@@ -60,12 +95,14 @@ const MenuCard = (props) => {
 };
 
 MenuCard.propTypes = {
+  itemKey: number.isRequired,
   title: string.isRequired,
   description: string.isRequired,
   price: number.isRequired,
   imageUrl: string.isRequired,
   showDeleteIcon: bool.isRequired,
   removeMenuItems: func.isRequired,
+  changeItemFields: func.isRequired,
 };
 
 export default MenuCard;
