@@ -80,13 +80,4 @@ describe('Testing the menu component', () => {
     expect(setMenuItems).toHaveBeenCalledWith([]);
   });
 
-  // it('should changeItemFields', () => {
-  //   container = render(
-  //     <MenuItemsContext.Provider value={{ menuItems, setMenuItems }}>
-  //       <Menu />
-  //     </MenuItemsContext.Provider>,
-  //   );
-  //
-  //   expect(setMenuItems).toHaveBeenCalledWith([]);
-  // });
 });
