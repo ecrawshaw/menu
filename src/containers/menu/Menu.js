@@ -15,6 +15,9 @@ const Menu = () => {
   const [newItemPrice, setNewItemPrice] = useState('');
   const [newItemImageUrl, setNewItemImageUrl] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+  const [editingField, setEditingField] = useState();
+  const [editedMenuItemField, setEditedMenuItemField] = useState();
+  const [editingFieldCardKey, setEditingFieldCardKey] = useState();
 
   const addMenuItems = () => {
     const newItem = {
@@ -33,7 +36,7 @@ const Menu = () => {
     setMenuItems(updatedMenuItems);
   };
 
-  const changeItemFields = (itemKey, propertyName, newValue) => {
+  const saveEditedFields = (itemKey, propertyName, newValue) => {
     const indexToUpdate = menuItems.findIndex((item) => item.key === itemKey);
     const updatedMenuItems = menuItems;
     updatedMenuItems[indexToUpdate][propertyName] = newValue;
@@ -50,7 +53,13 @@ const Menu = () => {
       imageUrl={item.imageUrl}
       showDeleteIcon={showDeleteIcon}
       removeMenuItems={removeMenuItems}
-      changeItemFields={changeItemFields}
+      saveEditedFields={saveEditedFields}
+      editedMenuItemField={editedMenuItemField}
+      setEditedMenuItemField={setEditedMenuItemField}
+      editingField={editingField}
+      setEditingField={setEditingField}
+      editingFieldCardKey={editingFieldCardKey}
+      setEditingFieldCardKey={setEditingFieldCardKey}
     />
   ));
 
