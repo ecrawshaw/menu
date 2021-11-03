@@ -6,62 +6,147 @@ import {
   Button, Card, Input, Popconfirm, Tooltip,
 } from 'antd';
 import './MenuCard.scss';
-import 'antd/dist/antd.css';
 import { DeleteOutlined } from '@ant-design/icons';
+import {
+  DESCRIPTION, IMAGE_URL, PRICE, TITLE,
+} from '../constants/MenuConstants';
 
 const MenuCard = (props) => {
   const { Meta } = Card;
-  const [editingTitle, setEditingTitle] = useState(false);
-  const [menuItemField, setMenuItemField] = useState();
+
   const {
-    itemKey, title, description, price, imageUrl, showDeleteIcon, removeMenuItems, changeItemFields,
+    itemKey,
+    title,
+    description,
+    price,
+    imageUrl,
+    showDeleteIcon,
+    removeMenuItems,
+    saveEditedFields,
+    editedMenuItemField,
+    setEditedMenuItemField,
+    editingField,
+    setEditingField,
+    editingFieldCardKey,
+    setEditingFieldCardKey,
   } = props;
 
   const popConfirmText = 'Are you sure to delete this item?';
-
-  const getDescription = () => (
-    <div>
-      <div>
-        {description}
-      </div>
-      <div>
-        $
-        {price}
-      </div>
-    </div>
-  );
 
   const removeMenuItem = () => {
     removeMenuItems(itemKey);
   };
 
-  const editTitle = () => {
-    setEditingTitle(true);
+  const saveUpdatedField = (field) => {
+    if (editedMenuItemField) {
+      saveEditedFields(itemKey, field, editedMenuItemField);
+    }
+    setEditedMenuItemField();
+    setEditingField(false);
   };
 
-  const saveUpdatedField = () => {
-    changeItemFields(itemKey, 'title', menuItemField);
-    setEditingTitle(false);
+  const cancelFieldUpdate = () => {
+    setEditedMenuItemField();
+    setEditingField(false);
   };
 
-  const getToolTipTitle = () => (<Button onClick={editTitle}>Click To Edit</Button>);
+  const getToolTip = (field) => (
+    <div className="tooltip-button">
+      <Button onClick={() => {
+        setEditingField(field);
+        setEditingFieldCardKey(itemKey);
+      }}
+      >
+        Click To Edit
+      </Button>
+    </div>
+  );
 
-  const getTitle = () => {
-    if (editingTitle) {
-      return (
-        <div className="editInput">
-          <Input
-            defaultValue={title}
-            onChange={(input) => setMenuItemField(input.target.value)}
-          />
-          <Button onClick={saveUpdatedField}>Save</Button>
-          <Button>Cancel</Button>
-        </div>
-      );
+  const getFieldEditor = (field) => {
+    let defaultValue;
+    switch (field) {
+      case TITLE:
+        defaultValue = title;
+        break;
+      case DESCRIPTION:
+        defaultValue = description;
+        break;
+      case PRICE:
+        defaultValue = price;
+        break;
+      case IMAGE_URL:
+        defaultValue = imageUrl;
+        break;
+      default:
+        defaultValue = '';
+        break;
     }
     return (
-      <Tooltip title={getToolTipTitle()}>
+      <div className="edit-input">
+        <Input
+          defaultValue={defaultValue}
+          onChange={(input) => setEditedMenuItemField(input.target.value)}
+        />
+        <Button onClick={() => saveUpdatedField(field)}>Save</Button>
+        <Button onClick={cancelFieldUpdate}>Cancel</Button>
+      </div>
+    );
+  };
+
+  const getDescriptionAndPrice = () => {
+    const elements = [];
+    if (editingField === DESCRIPTION && editingFieldCardKey === itemKey) {
+      elements.push(<div>{getFieldEditor(DESCRIPTION)}</div>);
+    } else {
+      elements.push(
+        <div>
+          <Tooltip title={getToolTip(DESCRIPTION)}>
+            <span>
+              {description}
+            </span>
+          </Tooltip>
+        </div>,
+      );
+    }
+
+    if (editingField === PRICE && editingFieldCardKey === itemKey) {
+      elements.push(<div>{getFieldEditor(PRICE)}</div>);
+    } else {
+      elements.push(
+        <div>
+          <Tooltip title={getToolTip(PRICE)}>
+            <span>
+              $
+              {price}
+            </span>
+          </Tooltip>
+        </div>,
+      );
+    }
+    return elements;
+  };
+
+  const getTitle = () => {
+    if (editingField === TITLE && editingFieldCardKey === itemKey) {
+      return (<div>{getFieldEditor(TITLE)}</div>);
+    }
+    return (
+      <Tooltip title={getToolTip(TITLE)}>
         <span>{title}</span>
+      </Tooltip>
+    );
+  };
+
+  const getCoverImage = () => {
+    if (editingField === IMAGE_URL && editingFieldCardKey === itemKey) {
+      return (<div>{getFieldEditor(IMAGE_URL)}</div>);
+    }
+    return (
+      <Tooltip title={getToolTip(IMAGE_URL)}>
+        <img
+          alt={title}
+          src={imageUrl}
+        />
       </Tooltip>
     );
   };
@@ -70,16 +155,11 @@ const MenuCard = (props) => {
     <div className="menu-item-card" key={itemKey}>
       <Card
         hoverable
-        cover={(
-          <img
-            alt={title}
-            src={imageUrl}
-          />
-              )}
+        cover={getCoverImage()}
       >
         <Meta
           title={getTitle()}
-          description={getDescription()}
+          description={getDescriptionAndPrice()}
         />
       </Card>
       <div className="delete-menu-item">
@@ -102,7 +182,13 @@ MenuCard.propTypes = {
   imageUrl: string.isRequired,
   showDeleteIcon: bool.isRequired,
   removeMenuItems: func.isRequired,
-  changeItemFields: func.isRequired,
+  saveEditedFields: func.isRequired,
+  editedMenuItemField: string.isRequired,
+  setEditedMenuItemField: func.isRequired,
+  editingField: string.isRequired,
+  setEditingField: func.isRequired,
+  editingFieldCardKey: string.isRequired,
+  setEditingFieldCardKey: func.isRequired,
 };
 
 export default MenuCard;

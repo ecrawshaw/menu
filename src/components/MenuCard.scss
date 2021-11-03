@@ -3,6 +3,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    max-width: 900px;
+
+    .edit-input{
+        display: flex;
+        max-width: 90%;
+    }
 
     .delete-menu-item{
         color: darkorange;
@@ -11,21 +17,28 @@
             font-size: 25px;
         }
     }
-
-    .menu-item-card__title{
-        width: 100%;
-        border-bottom: 2px solid;
-    }
-    .menu-item-card__price{
-        padding: 5px;
-    }
-    .menu-item-card__image{
-        max-height: 200px;
-        margin: 5px;
-    }
-
     .ant-input{
         width: 75%;
     }
 }
+.ant-tooltip{
+    .tooltip-button{
+        .ant-btn {
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        .ant-btn, .ant-btn:focus {
+            background: transparent;
+            border-color: transparent;
+            color: white;
+        }
+
+        .ant-btn:hover, .ant-btn-primary:hover {
+            border-color: transparent;
+            color: darkorange;
+        }
+    }
+}
+
 

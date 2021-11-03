@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import menuItemsData from './menuItems.json';
 import MenuItemsContext from './containers/menu/MenuItemContext';
+import 'antd/dist/antd.css';
 import Menu from './containers/menu/Menu';
 
 function App() {

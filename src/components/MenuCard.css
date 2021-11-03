@@ -3,6 +3,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 900px;
+}
+.menu-item-card .edit-input {
+  display: flex;
+  max-width: 90%;
 }
 .menu-item-card .delete-menu-item {
   color: darkorange;
@@ -11,19 +16,22 @@
 .menu-item-card .delete-menu-item .delete-icon {
   font-size: 25px;
 }
-.menu-item-card .menu-item-card__title {
-  width: 100%;
-  border-bottom: 2px solid;
-}
-.menu-item-card .menu-item-card__price {
-  padding: 5px;
-}
-.menu-item-card .menu-item-card__image {
-  max-height: 200px;
-  margin: 5px;
-}
 .menu-item-card .ant-input {
   width: 75%;
+}
+
+.ant-tooltip .tooltip-button .ant-btn {
+  background-color: transparent;
+  border-color: transparent;
+}
+.ant-tooltip .tooltip-button .ant-btn, .ant-tooltip .tooltip-button .ant-btn:focus {
+  background: transparent;
+  border-color: transparent;
+  color: white;
+}
+.ant-tooltip .tooltip-button .ant-btn:hover, .ant-tooltip .tooltip-button .ant-btn-primary:hover {
+  border-color: transparent;
+  color: darkorange;
 }
 
 /*# sourceMappingURL=MenuCard.css.map */
