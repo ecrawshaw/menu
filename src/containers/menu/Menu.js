@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import MenuCard from '../../components/MenuCard';
 import './Menu.scss';
 import MenuItemsContext from './MenuItemContext';
 import AddRemoveItems from './AddRemoveItems';
+import MenuCard from '../../components/MenuCard';
 
 const Menu = () => {
   const menuItemsContext = useContext(MenuItemsContext);
@@ -15,13 +15,16 @@ const Menu = () => {
   const [newItemPrice, setNewItemPrice] = useState('');
   const [newItemImageUrl, setNewItemImageUrl] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+  const [editingField, setEditingField] = useState();
+  const [editedMenuItemField, setEditedMenuItemField] = useState();
+  const [editingFieldCardKey, setEditingFieldCardKey] = useState();
 
   const addMenuItems = () => {
     const newItem = {
       key: uuidv4(),
       title: newItemTitle,
       description: newItemDescription,
-      price: newItemPrice,
+      price: newItemPrice.replace(/[!@#$%^&*]/g, ''),
       imageUrl: newItemImageUrl,
     };
     const updatedMenuItems = [...menuItems, newItem];
@@ -31,6 +34,13 @@ const Menu = () => {
   const removeMenuItems = (menuItem) => {
     const updatedMenuItems = menuItems.filter((item) => item.key !== menuItem);
     setMenuItems(updatedMenuItems);
+  };
+
+  const saveEditedFields = (itemKey, propertyName, newValue) => {
+    const indexToUpdate = menuItems.findIndex((item) => item.key === itemKey);
+    const updatedMenuItems = menuItems;
+    updatedMenuItems[indexToUpdate][propertyName] = newValue;
+    setMenuItems([...updatedMenuItems]);
   };
 
   const menuItemRenderer = () => menuItems.map((item) => (
@@ -43,6 +53,13 @@ const Menu = () => {
       imageUrl={item.imageUrl}
       showDeleteIcon={showDeleteIcon}
       removeMenuItems={removeMenuItems}
+      saveEditedFields={saveEditedFields}
+      editedMenuItemField={editedMenuItemField}
+      setEditedMenuItemField={setEditedMenuItemField}
+      editingField={editingField}
+      setEditingField={setEditingField}
+      editingFieldCardKey={editingFieldCardKey}
+      setEditingFieldCardKey={setEditingFieldCardKey}
     />
   ));
 

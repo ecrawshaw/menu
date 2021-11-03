@@ -79,4 +79,5 @@ describe('Testing the menu component', () => {
     userEvent.click(yesButton);
     expect(setMenuItems).toHaveBeenCalledWith([]);
   });
+
 });
