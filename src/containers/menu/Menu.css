@@ -13,10 +13,29 @@
   margin-bottom: 10px;
   color: darkorange;
 }
-@media (max-width: 400px) {
+@media (max-width: 650px) {
   .menu-item-container .menu-title {
     font-size: 45px;
   }
+}
+
+.ant-btn {
+  background-color: darkorange;
+  border-color: darkorange;
+}
+
+.ant-btn, .ant-btn:focus {
+  margin: 5px;
+  background: darkorange;
+  border-color: darkorange;
+  color: white;
+}
+
+.ant-btn:hover, .ant-btn-primary:hover {
+  margin: 5px;
+  border-color: darkorange;
+  color: darkorange;
+  background: white;
 }
 
 /*# sourceMappingURL=Menu.css.map */

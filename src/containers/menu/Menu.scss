@@ -10,11 +10,30 @@
     .menu-title{
         font-family: 'Creepster', cursive;
         font-size: 75px;
-        @media (max-width: 400px){
+        @media (max-width: 650px){
             font-size: 45px;
         }
         margin-bottom: 10px;
         color: darkorange;
     }
+
+}
+.ant-btn {
+    background-color: darkorange;
+    border-color: darkorange;
+}
+
+.ant-btn, .ant-btn:focus {
+    margin: 5px;
+    background: darkorange;
+    border-color: darkorange;
+    color: white;
+}
+
+.ant-btn:hover, .ant-btn-primary:hover {
+    margin: 5px;
+    border-color: darkorange;
+    color: darkorange;
+    background: white;
 }
 

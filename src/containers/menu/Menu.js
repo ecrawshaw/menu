@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import MenuCard from '../../components/MenuCard';
 import './Menu.scss';
 import MenuItemsContext from './MenuItemContext';
 import AddRemoveItems from './AddRemoveItems';
+import MenuCard from '../../components/MenuCard';
 
 const Menu = () => {
   const menuItemsContext = useContext(MenuItemsContext);
@@ -21,7 +21,7 @@ const Menu = () => {
       key: uuidv4(),
       title: newItemTitle,
       description: newItemDescription,
-      price: newItemPrice,
+      price: newItemPrice.replace(/[!@#$%^&*]/g, ''),
       imageUrl: newItemImageUrl,
     };
     const updatedMenuItems = [...menuItems, newItem];

@@ -1,24 +1,21 @@
-.ant-btn {
+.add-item-modal .add-menu-item-title, .add-item-modal .add-menu-item-image-url, .add-item-modal .add-menu-item-price, .add-item-modal .add-menu-item-description {
+  padding: 5px;
+}
+.add-item-modal .ant-btn {
   background-color: darkorange;
   border-color: darkorange;
 }
-
-.ant-btn, .ant-btn:focus {
+.add-item-modal .ant-btn, .add-item-modal .ant-btn:focus {
   margin: 5px;
   background: darkorange;
   border-color: darkorange;
   color: white;
 }
-
-.ant-btn:hover, .ant-btn-primary:hover {
+.add-item-modal .ant-btn:hover, .add-item-modal .ant-btn-primary:hover {
   margin: 5px;
   border-color: darkorange;
   color: darkorange;
   background: white;
-}
-
-.add-item-modal .add-menu-item-title, .add-item-modal .add-menu-item-image-url, .add-item-modal .add-menu-item-price, .add-item-modal .add-menu-item-description {
-  padding: 5px;
 }
 
 /*# sourceMappingURL=AddRemoveItems.css.map */
