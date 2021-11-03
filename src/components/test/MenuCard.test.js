@@ -30,9 +30,6 @@ describe('Testing the menuCard component', () => {
     expect(container.getByText('$3.99')).toBeInTheDocument();
   });
 
-  // need more here
-  //
-  //
   it('Should render a menu item card and delete it', () => {
     props.showDeleteIcon = true;
     container = render(
@@ -86,6 +83,23 @@ describe('Testing the menuCard component', () => {
     expect(props.saveEditedFields).toHaveBeenCalledWith('Snickers', DESCRIPTION, 'Milky Way Description');
   });
 
+  it('Should edit and cancel saving changes', () => {
+    props.editingField = DESCRIPTION;
+    props.editingFieldCardKey = 'Snickers';
+    props.editedMenuItemField = 'Milky Way Description';
+    container = render(
+        <MenuCard {...props} />,
+    );
+    const input = container.getByDisplayValue('Hungry, why wait?');
+    fireEvent.change(input, { target: { value: 'Milky Way Description' } });
+    expect(input.value).toBe('Milky Way Description');
+    const cancelButton = container.getByText('Cancel');
+    fireEvent.click(cancelButton);
+
+    expect(props.setEditedMenuItemField).toHaveBeenCalledWith('Milky Way Description');
+    expect(props.setEditingField).toHaveBeenCalledWith(false);
+  });
+
   it('Should edit and save the card price', () => {
     props.editingField = PRICE;
     props.editingFieldCardKey = 'Snickers';
@@ -111,9 +125,9 @@ describe('Testing the menuCard component', () => {
     container = render(
         <MenuCard {...props} />,
     );
-    const input = container.getByAltText('Snickers');
+    const input = container.getByDisplayValue('https://upload.wikimedia.org/wikipedia/commons/9/97/Snickers-broken.png');
     fireEvent.change(input, { target: { value: 'url' } });
-    expect(input.value).toBe('1');
+    expect(input.value).toBe('url');
     const saveButton = container.getByText('Save');
     fireEvent.click(saveButton);
 
@@ -121,4 +135,5 @@ describe('Testing the menuCard component', () => {
     expect(props.setEditingField).toHaveBeenCalledWith(false);
     expect(props.saveEditedFields).toHaveBeenCalledWith('Snickers', IMAGE_URL, 'url');
   });
+
 });

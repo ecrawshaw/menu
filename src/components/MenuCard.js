@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   string, bool, func,
 } from 'prop-types';
@@ -8,7 +8,7 @@ import {
 import './MenuCard.scss';
 import { DeleteOutlined } from '@ant-design/icons';
 import {
-  DESCRIPTION, IMAGE_URL, PRICE, TITLE,
+  DESCRIPTION, IMAGE_URL, POP_CONFIRM_TEXT, PRICE, TITLE,
 } from '../constants/MenuConstants';
 
 const MenuCard = (props) => {
@@ -30,8 +30,6 @@ const MenuCard = (props) => {
     editingFieldCardKey,
     setEditingFieldCardKey,
   } = props;
-
-  const popConfirmText = 'Are you sure to delete this item?';
 
   const removeMenuItem = () => {
     removeMenuItems(itemKey);
@@ -100,7 +98,7 @@ const MenuCard = (props) => {
     } else {
       elements.push(
         <div>
-          <Tooltip title={getToolTip(DESCRIPTION)}>
+          <Tooltip placement="left" mouseEnterDelay=".8" title={getToolTip(DESCRIPTION)}>
             <span>
               {description}
             </span>
@@ -114,7 +112,7 @@ const MenuCard = (props) => {
     } else {
       elements.push(
         <div>
-          <Tooltip title={getToolTip(PRICE)}>
+          <Tooltip placement="left" mouseEnterDelay=".8" title={getToolTip(PRICE)}>
             <span>
               $
               {price}
@@ -131,7 +129,7 @@ const MenuCard = (props) => {
       return (<div>{getFieldEditor(TITLE)}</div>);
     }
     return (
-      <Tooltip title={getToolTip(TITLE)}>
+      <Tooltip placement="left" mouseEnterDelay=".8" title={getToolTip(TITLE)}>
         <span>{title}</span>
       </Tooltip>
     );
@@ -142,7 +140,7 @@ const MenuCard = (props) => {
       return (<div>{getFieldEditor(IMAGE_URL)}</div>);
     }
     return (
-      <Tooltip title={getToolTip(IMAGE_URL)}>
+      <Tooltip placement="left" mouseEnterDelay=".8" title={getToolTip(IMAGE_URL)}>
         <img
           alt={title}
           src={imageUrl}
@@ -164,7 +162,7 @@ const MenuCard = (props) => {
       </Card>
       <div className="delete-menu-item">
         { showDeleteIcon ? (
-          <Popconfirm placement="topLeft" title={popConfirmText} onConfirm={removeMenuItem} okText="Yes" cancelText="No">
+          <Popconfirm placement="topLeft" title={POP_CONFIRM_TEXT} onConfirm={removeMenuItem} okText="Yes" cancelText="No">
             <DeleteOutlined role="button" />
           </Popconfirm>
         )

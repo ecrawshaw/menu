@@ -5,6 +5,7 @@ import {
 import {
   bool, func, string,
 } from 'prop-types';
+import { MISSING_FIELDS_ALERT } from '../../constants/MenuConstants';
 import './AddRemoveItems.scss';
 
 const AddRemoveItems = (props) => {
@@ -65,7 +66,7 @@ const AddRemoveItems = (props) => {
           <Input placeholder="Image URL" onChange={(input) => setNewItemImageUrl(input.target.value)} />
         </div>
       </div>
-      {showAlert ? <Alert message="Please note that all fields are required to add a new menu item" type="error" /> : null}
+      {showAlert ? <Alert message={MISSING_FIELDS_ALERT} type="error" /> : null}
     </Modal>
   );
 
